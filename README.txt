@@ -16,7 +16,7 @@ The Structure of api is below
     follwed object
 ]
 
-We Will Use Postman Which Is Inbuilt in this editor thats why i have choosed this editor of this project - https://codeingeditor.netlify.app
+We Will Use Postman Which Is Inbuilt in this editor thats why i have choosed this editor of this project - https://codingeditor.netlify.app
 
 QUOTIVE.NETLIFY.APP USES THIS API
 
