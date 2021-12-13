@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="description">
+    <meta name="author" content="author">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: system-ui;
+        color: black;
+    }
+    
+    body{
+        background: rgb(3,244,185);
+        background: linear-gradient(90deg, rgba(3,244,185,1) 0%, rgba(76,255,88,1) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    
+    #quote{
+        position: relative;
+        background: #fff6;
+        border-radius: 3vmin;
+        width: 55vw;
+        padding:4vh;
+        height: 55vh;
+        backdrop-filter: blur(20px);
+        box-shadow:
+            0 0 2vh 1vh #fff4,
+            inset 1vh 1vh 2vh #fff2
+        ;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    
+    @keyframes up_and_down{
+        to{
+            top:calc(var(--top) - 5vmin);
+        }
+    }
+    
+    #quote1{
+        --top:12vmin;
+        background: #ffffff85;
+        --size:30vmin;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        position:absolute;
+        top: 12vmin;
+        left: 125vmin;
+        z-index: -1;
+        box-shadow:
+            0 0 2vh 1vh #fff4,
+            inset 1vh 1vh 2vh #fff2
+        ;
+        animation: up_and_down 5s ease-in-out infinite forwards alternate;
+    }
+    
+    #quote2{
+        --top:55vmin;
+        background: #ffffff85;
+        --size:30vmin;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        position:absolute;
+        top: 55vmin;
+        left: 23vmin;
+        z-index: -1;
+        box-shadow:
+            0 0 2vh 1vh #fff4,
+            inset 1vh 1vh 2vh #fff2
+        ;
+        animation: up_and_down 5s ease-in-out infinite forwards alternate;
+        animation-delay:5s ;
+    }
+    
+    #quote > button{
+        position: absolute;
+        top: 2vmin;
+        right: 2vmin;
+        background: #fff1;
+        border-radius: 1vmin;
+        padding:1vh 5vh;
+        font-size: 2vmin;
+        backdrop-filter: blur(20px);
+        box-shadow:
+            0 0 2vh 1vh #fff2,
+            inset 1vh 1vh 2vh #fff1
+        ;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    #quote_text{
+        font-size: 5vmin;
+    }
+    
+    #quote_author{
+        font-size: 3vmin;
+        background: #fff1;
+        border-radius: 1vmin;
+        padding:2vh;
+        width: fit-content;
+        font-size: 2vmin;
+        backdrop-filter: blur(20px);
+        box-shadow:
+            0 0 2vh 1vh #fff2,
+            inset 1vh 1vh 2vh #fff1
+        ;
+    }
+    </style>
+</head>
+<body>
+    <div id="quote1"></div>
+    <div id="quote2"></div>
+    <div id="quote">
+        <h1 id="quote_text">Nothing is so strong as gentleness. Nothing is so gentle as real strength.
+</h1>
+        <h3 id="quote_author">By Frances de Sales</h3>
+        <button onclick="newQuote()">Get Quote</button>
+    </div>
+    <script>
+    let text = document.querySelector("#quote_text")
+    let author = document.querySelector("#quote_author")
+    let quote;
+    fetch("https://type.fit/api/quotes", {
+      method: 'GET',
+    })
+    .then(response => response.text())
+    .then((text) => {
+      let data = JSON.parse(text)
+      quote = data;
+      newQuote()
+    });
+    
+    function newQuote(){
+        let tempObj = quote[Math.floor(Math.random() * quote.length)]
+        text.innerText = tempObj.text
+        author.innerText = "By " + tempObj.author.toString().replace(/null/g, "Anonymous")
+    }
+    </script>
+</body>
+</html>
