@@ -16,13 +16,11 @@ The Structure of api is below
     follwed object
 ]
 
-We Will Use Postman Which Is Inbuilt in this editor thats why i have choosed this editor of this project
+We Will Use Postman Which Is Inbuilt in this editor thats why i have choosed this editor of this project - https://codeingeditor.netlify.app
 
 QUOTIVE.NETLIFY.APP USES THIS API
 
-Lets firstly see how can we use the api
-
-This postman provides you the fetch code
+Postman provides you the fetch code
 
 This is the fetch code
 
@@ -33,13 +31,3 @@ fetch("https://type.fit/api/quotes", {
 .then((text) => {
   let data = JSON.parse(text)
 });
-
-lets start coding
-
-this is editor spots error before the runtime
-
-Block code is taking to much space i will disable it for now
-
-you can see that smooth animation
-
-code link will be in description
